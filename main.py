@@ -5,20 +5,9 @@ app = Flask(__name__)
 
 app.config['DEBUG'] = True      # displays runtime errors in the browser, too
 
-user_record = []
-
-def set_user_record(u_item):
-    user_record.append(u_item)
-    return user_record
-
-def get_user_record():
-    return user_record
-
-def clear_passwords(pass_w, v_pass_w):
-    pass_w = ""
-    v_pass_w = ""
-    return pass_w, v_pass_w
-
+# User signup path will validate the fields in the form and
+# direct the user to the welcome confirmation message if
+# all fields submitted are valid
 @app.route("/signup", methods=['POST'] )
 def signup():
     user_name = request.form['username']
