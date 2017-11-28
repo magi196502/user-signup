@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="/signup" method="post">
+    <p>
+        <label for="username">Username</label>        
+        <input type="text" name="username" value="{{username}}"/>
+        {% if error and error_type == "USER" %}
+        <label class='error'>
+            {{ error }}
+        </label>
+        {% else %}
+    
+            {% if error and error_type == "ALL" %}
+            
+            <label class='error'> Username cannot be empty </label>
+
+            {% endif %}
+    </p>
+        {% endif %}
+    
+    <p>
+    <label class="top_labels" for="password"> Password </label>
+        
+        <input type="password" name="password" value="{{password}}"/>
+
+    {% if (error and  error_type == "PASSWORD") %}
+    <label class='error'>
+        {{ error }}
+    </label>
+    {% else %}
+
+        {% if error and error_type == "ALL" %}
+    
+            <label class='error'> Password cannot be empty </label>
+
+        {% endif %}
+    </p>
+    {% endif %}
+    <p>
+    <label class="password_label" for="verify_password">Verify password</label>
+        <input type="password" name="verify_password" value="{{verify_password}}"/>
+    
+        {% if error and error_type == "ALL" %}
+    
+            <label class='error'> Confirmation password cannot be empty </label>
+    </p>
+        {% endif %}
+    <p>
+    <label class="bottom_labels"> Email (Optional) </label>
+        <input type="text" name="email" value="{{email}}"/>
+    {% if error and error_type == "EMAIL" %}
+    <label class='error'>
+        {{ error }}
+    </label>
+    </p>
+    {% endif %}
+    <p>
+            <input type="submit" value="sign up" />
+            
+    </p>
+</form>
+{% endblock %}
